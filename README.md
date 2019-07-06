@@ -81,7 +81,11 @@ node.js中可以引入jsonwebtoken库进行对应操作
 
 
 
+### 使用koa-body中间件获取上传的文件
 
+```text
+从ctx.request.files.file属性中取出文件
+```
 
 
 
