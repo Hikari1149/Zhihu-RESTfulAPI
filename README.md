@@ -81,13 +81,33 @@ node.js中可以引入jsonwebtoken库进行对应操作
 
 
 
-### 使用koa-body中间件获取上传的文件
+### 上传图片时用到的中间件
+
+#### 使用koa-body中间件获取上传的文件
 
 ```text
 从ctx.request.files.file属性中取出文件
 ```
 
+#### 使用koa-static中间件生成图片链接
 
+koa-static设置静态服务器的目录,目录下文件可以通过http请求访问
+
+```text
+path.basename() 方法返回 path 的最后一部分
+ctx.origin:获取Url的来源:protocal和Host部分
+图片链接: ctx.origin + '图片目录' + path.basename(file.path)
+```
+
+### 关注和粉丝接口
+
+某个用户关注的人和其粉丝为多对多的关系
+
+给每个用户添加数据类型为数组的关注和粉丝子段 ?
+
+由实际情况来看,用户关注的人数据量不会很大,但是某些用户粉丝数可以是百万以上.每个用户的粉丝用数组存储显然占用太大空间.
+
+只需要存用户的关注者列表, 求\(userId='xxx'\)的粉丝时,在数据库中把关注列表包含userId='xxx'的用户筛选出来即可
 
 
 
